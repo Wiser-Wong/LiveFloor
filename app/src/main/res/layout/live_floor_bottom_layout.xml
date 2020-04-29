@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_keyboard_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_keyboard_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/iv_live_send"
+            android:layout_toLeftOf="@+id/iv_live_send"
+            android:background="@color/white"
+            android:hint="说点什么..."
+            android:paddingStart="10dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="14dp"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_live_send"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/icon_send" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_floor_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_keyboard_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/ll_floor_bottom_fun"
+            android:layout_toLeftOf="@+id/ll_floor_bottom_fun"
+            android:background="@drawable/shape_input_bg"
+            android:hint="说点什么..."
+            android:paddingStart="10dp"
+            android:paddingTop="7dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="7dp"
+            android:textColor="@color/antiqueWhite"
+            android:textColorHint="@color/antiqueWhite"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_floor_bottom_fun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/shape_translucent_bg"
+                android:padding="7dp"
+                android:src="@mipmap/icon_shoppiing_bag" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/shape_translucent_bg"
+                android:padding="7dp"
+                android:src="@mipmap/icon_gift" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/shape_translucent_bg"
+                android:padding="7dp"
+                android:src="@mipmap/icon_share" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_live_close"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/shape_translucent_bg"
+                android:padding="7dp"
+                android:src="@mipmap/icon_close" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</merge>
