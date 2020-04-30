@@ -1,13 +1,13 @@
 package com.example.livedemo.android.ui.live.adapter.barrageholder;
 
+import com.example.livedemo.R;
+import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
+import com.wiser.library.adapter.WISERHolder;
+
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
-import com.example.livedemo.R;
-import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
-import com.wiser.library.adapter.WISERHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,11 +17,11 @@ import butterknife.ButterKnife;
  * 
  *         弹幕holder
  */
-public class LiveBarrageHolder extends BaseHolder<LiveBarrageModel> {
+public class LiveBarrageTipHolder extends BaseHolder<LiveBarrageModel> {
 
 	@BindView(R.id.tv_name) TextView tvName;
 
-	public LiveBarrageHolder(@NonNull View itemView) {
+	public LiveBarrageTipHolder(@NonNull View itemView) {
 		super(itemView);
 	}
 

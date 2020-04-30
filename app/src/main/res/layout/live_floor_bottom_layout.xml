@@ -49,21 +49,20 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_keyboard_bottom"
+        <TextView
+            android:id="@+id/tv_keyboard_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/ll_floor_bottom_fun"
             android:layout_toLeftOf="@+id/ll_floor_bottom_fun"
             android:background="@drawable/shape_input_bg"
-            android:hint="说点什么..."
+            android:textColor="@color/antiqueWhite"
+            android:text="说点什么..."
             android:paddingStart="10dp"
             android:paddingTop="7dp"
             android:paddingEnd="10dp"
             android:paddingBottom="7dp"
-            android:textColor="@color/antiqueWhite"
-            android:textColorHint="@color/antiqueWhite"
             android:textSize="13sp" />
 
         <LinearLayout
