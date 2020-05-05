@@ -30,7 +30,7 @@
             android:layout_height="40dp"
             android:layout_margin="3dp"
             android:adjustViewBounds="true"
-            android:src="@mipmap/launch_icon"
+            android:src="@mipmap/ic_launcher_round"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
-            android:text="凯叔讲故事"
+            android:text="林俊杰本人"
             android:textColor="@color/white"
             android:textSize="13sp"
             app:layout_constraintLeft_toRightOf="@+id/iv_top_head"

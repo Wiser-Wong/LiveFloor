@@ -28,7 +28,7 @@ public class LiveBarrageRecycleView extends RecyclerView {
 
 	private boolean					isTouch;					// 是否触摸聊天列表
 
-	private final int				MAX_COUNT			= 10;	// 最大数量
+	private final int				MAX_COUNT			= 100;	// 最大数量
 
 	private final int				NEAR_BOTTOM_COUNT	= 1;	// 滚动到接近底部然后顺滑滚动
 
