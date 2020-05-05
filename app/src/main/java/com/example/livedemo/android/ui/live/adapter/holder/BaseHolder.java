@@ -1,4 +1,4 @@
-package com.example.livedemo.android.ui.live.adapter.barrageholder;
+package com.example.livedemo.android.ui.live.adapter.holder;
 
 import android.view.View;
 

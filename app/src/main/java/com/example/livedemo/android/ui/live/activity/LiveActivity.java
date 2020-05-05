@@ -24,6 +24,6 @@ public class LiveActivity extends BaseActivity {
 
 	@Override protected void initData(Intent intent) {
 		LiveHelper.display().commitReplace(R.id.fl_video, new LiveVideoFragment(), LiveVideoFragment.class.getName());
-		LiveHelper.display().commitReplace(R.id.fl_view, new LiveFloorFragment(), LiveFloorFragment.class.getName());
+		LiveHelper.display().commitReplace(R.id.fl_floor, new LiveFloorFragment(), LiveFloorFragment.class.getName());
 	}
 }

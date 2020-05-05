@@ -4,19 +4,15 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.example.livedemo.android.ui.live.view.LiveBarrageRecycleView
-        android:id="@+id/rlv_barrage"
-        android:layout_width="250dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layoutAnimation="@anim/barrage_anim"
-        android:overScrollMode="never"
-        android:scrollbars="none" />
+    <com.example.livedemo.android.ui.live.view.LiveBarrageLayout
+        android:id="@+id/live_barrage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.example.livedemo.android.ui.live.view.LiveBottomLayout
         android:id="@+id/live_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"/>
 
 </LinearLayout>

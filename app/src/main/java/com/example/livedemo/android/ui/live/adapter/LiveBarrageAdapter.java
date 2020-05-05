@@ -3,9 +3,9 @@ package com.example.livedemo.android.ui.live.adapter;
 import android.view.ViewGroup;
 
 import com.example.livedemo.R;
-import com.example.livedemo.android.ui.live.adapter.barrageholder.BaseHolder;
-import com.example.livedemo.android.ui.live.adapter.barrageholder.LiveBarrageHolder;
-import com.example.livedemo.android.ui.live.adapter.barrageholder.LiveBarrageTipHolder;
+import com.example.livedemo.android.ui.live.adapter.holder.BaseHolder;
+import com.example.livedemo.android.ui.live.adapter.holder.barrageholder.LiveBarrageHolder;
+import com.example.livedemo.android.ui.live.adapter.holder.barrageholder.LiveBarrageTipHolder;
 import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 import com.example.livedemo.android.util.LiveBarrageType;
 import com.wiser.library.adapter.WISERRVAdapter;

@@ -14,20 +14,29 @@ import com.wiser.library.base.WISERBuilder;
  */
 public class LiveFloorFragment extends BaseFragment {
 
+	private LiveFloorTopFragment floorTopFragment;
+
 	@Override protected WISERBuilder build(WISERBuilder builder) {
 		builder.layoutId(R.layout.live_floor_fragment);
 		return builder;
 	}
 
 	@Override protected void initData(Bundle savedInstanceState) {
-
 		initPartFragment();
-
 	}
 
-	//加载分布局
-	private void initPartFragment(){
-		//加载浮层底部状态栏布局
-		LiveHelper.display().commitChildReplace(this,R.id.fl_floor_bottom,new LiveBottomFunFragment());
+	// 加载分布局
+	private void initPartFragment() {
+		// 加载浮层顶部区域
+		LiveHelper.display().commitChildReplace(this, R.id.fl_floor_top, floorTopFragment = new LiveFloorTopFragment());
+		// 加载浮层底部状态栏布局
+		LiveHelper.display().commitChildReplace(this, R.id.fl_floor_bottom, LiveFloorBottomFragment.createFloorBottomFragment(isShow -> {
+			floorTopFragment.showTopHead(isShow);
+		}));
+	}
+
+	@Override public void onDetach() {
+		super.onDetach();
+		floorTopFragment = null;
 	}
 }

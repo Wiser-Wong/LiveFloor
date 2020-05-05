@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_chat_face"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/lightGray" />
+
+    <com.example.livedemo.android.ui.live.view.LiveFaceViewPager
+        android:id="@+id/vp_chat_face"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_face_point"
+        android:layout_below="@+id/view_line"
+        android:layout_gravity="center_vertical" />
+
+    <LinearLayout
+        android:id="@+id/ll_face_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp" />
+
+</merge>

@@ -1,14 +1,14 @@
 package com.example.livedemo.android.ui.live.fragment;
 
-import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
-import com.example.livedemo.android.util.LiveBarrageType;
-import com.wiser.library.base.WISERBiz;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class LiveBottomFunBiz extends WISERBiz<LiveBottomFunFragment> {
+import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
+import com.example.livedemo.android.util.LiveBarrageType;
+import com.wiser.library.base.WISERBiz;
+
+public class LiveFloorTopBiz extends WISERBiz<LiveFloorTopFragment> {
 
     private String[] data = new String[]{"贱贱贱贱贱贱贱贱贱贱贱","叽叽叽叽急急急","简历时刻打飞机了深刻的房间里上课的方式来得快复健科","塑料袋副驾驶的路口附近的时空裂缝建档立卡司法局来看待时间分类的时间里"};
 
