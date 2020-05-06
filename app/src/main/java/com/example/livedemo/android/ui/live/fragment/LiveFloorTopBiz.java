@@ -15,7 +15,7 @@ public class LiveFloorTopBiz extends WISERBiz<LiveFloorTopFragment> {
     public List<LiveBarrageModel> firstData(){
         List<LiveBarrageModel> models = new ArrayList<>();
         LiveBarrageModel model = new LiveBarrageModel();
-        model.name = "欢迎来到直播间！XXX严禁未成年进行直播或打赏，请大家共同准守、监督。直播间内严禁出现违法违规、低俗、色情、吸烟酗酒等内容，若有违规行为请及时举报。如主播在直播过程中以陪玩、送礼等方式进行诱导打赏、私下交易，清谨慎判断，以防人身或财产损失。";
+        model.nickName = "欢迎来到直播间！XXX严禁未成年进行直播或打赏，请大家共同准守、监督。直播间内严禁出现违法违规、低俗、色情、吸烟酗酒等内容，若有违规行为请及时举报。如主播在直播过程中以陪玩、送礼等方式进行诱导打赏、私下交易，清谨慎判断，以防人身或财产损失。";
         model.type = LiveBarrageType.CHAT_TIP;
         models.add(model);
         return models;
@@ -25,7 +25,7 @@ public class LiveFloorTopBiz extends WISERBiz<LiveFloorTopFragment> {
         List<LiveBarrageModel> models = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             LiveBarrageModel model = new LiveBarrageModel();
-            model.name = data[new Random().nextInt(4)];
+            model.nickName = data[new Random().nextInt(4)];
             model.type = LiveBarrageType.CHAT_VIP;
             models.add(model);
         }
@@ -34,7 +34,7 @@ public class LiveFloorTopBiz extends WISERBiz<LiveFloorTopFragment> {
 
     public LiveBarrageModel addItem(){
         LiveBarrageModel model = new LiveBarrageModel();
-        model.name = data[new Random().nextInt(3)];
+        model.nickName = data[new Random().nextInt(3)];
         model.type = LiveBarrageType.CHAT_VIP;
         return model;
     }

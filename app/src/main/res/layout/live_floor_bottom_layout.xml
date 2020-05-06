@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:visibility="gone"
-            android:clickable="true">
+            android:clickable="true"
+            android:visibility="gone">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_keyboard_top"
@@ -58,8 +58,8 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:adjustViewBounds="true"
-                    android:visibility="gone"
-                    android:src="@mipmap/icon_keyboard" />
+                    android:src="@mipmap/icon_keyboard"
+                    android:visibility="gone" />
 
             </FrameLayout>
 
@@ -154,16 +154,13 @@
                 android:padding="7dp"
                 android:src="@mipmap/icon_share" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_live_close"
+            <View
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/shape_30000000_oval_bg"
                 android:padding="7dp"
-                android:src="@mipmap/icon_close" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 

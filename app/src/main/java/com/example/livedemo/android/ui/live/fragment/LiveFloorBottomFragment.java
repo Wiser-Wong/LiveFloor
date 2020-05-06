@@ -3,11 +3,14 @@ package com.example.livedemo.android.ui.live.fragment;
 import android.os.Bundle;
 
 import com.example.livedemo.R;
+import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 import com.example.livedemo.android.ui.live.view.LiveBarrageLayout;
 import com.example.livedemo.android.ui.live.view.LiveBottomLayout;
 import com.example.livedemo.frame.LiveHelper;
 import com.example.livedemo.frame.base.BaseFragment;
 import com.wiser.library.base.WISERBuilder;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,7 +20,7 @@ import butterknife.ButterKnife;
  *
  *         LiveBottomFunFragment 直播浮层底部状态栏
  */
-public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz> {
+public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz>  implements ILiveVideoFloorBottomView, ILiveVideoFloorMessageView{
 
 	@BindView(R.id.live_barrage) LiveBarrageLayout	barrageLayout;
 
@@ -43,7 +46,7 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz> {
 
 	@Override protected void initData(Bundle savedInstanceState) {
 
-		barrageLayout.setData(biz().firstData());
+		barrageLayout.initMessages(biz().firstData());
 
 		liveBottom.setOnKeyboardListener(onKeyboardListener);
 
@@ -57,7 +60,7 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz> {
 	private Runnable	runnable	= new Runnable() {
 
 										@Override public void run() {
-											barrageLayout.addData(biz().addData());
+											barrageLayout.addMessages(biz().addData());
 											LiveHelper.mainLooper().execute(runnable, 1300);
 										}
 									};
@@ -65,7 +68,7 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz> {
 	private Runnable	runnable1	= new Runnable() {
 
 										@Override public void run() {
-											barrageLayout.addItem(biz().addItem());
+											barrageLayout.addTipMessage(biz().addItem());
 											LiveHelper.mainLooper().execute(runnable1, 500);
 										}
 									};
@@ -96,6 +99,36 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz> {
 
 	private void setOnKeyboardListener(OnKeyboardListener onKeyboardListener) {
 		this.onKeyboardListener = onKeyboardListener;
+	}
+
+	@Override
+	public void setShutUp(boolean isShutUp) {
+		if (liveBottom != null) liveBottom.setShutUp(isShutUp);
+	}
+
+	@Override
+	public void initMessages(List<LiveBarrageModel> barrageModels) {
+		if (barrageLayout != null) barrageLayout.initMessages(barrageModels);
+	}
+
+	@Override
+	public void initMessage(LiveBarrageModel barrageModel) {
+		if (barrageLayout != null) barrageLayout.initMessage(barrageModel);
+	}
+
+	@Override
+	public void addMessages(List<LiveBarrageModel> barrageModels) {
+		if (barrageLayout != null) barrageLayout.addMessages(barrageModels);
+	}
+
+	@Override
+	public void addMessage(LiveBarrageModel barrageModel) {
+		if (barrageLayout != null) barrageLayout.addMessage(barrageModel);
+	}
+
+	@Override
+	public void addTipMessage(LiveBarrageModel barrageModel) {
+		if (barrageLayout != null) barrageLayout.addTipMessage(barrageModel);
 	}
 
 	public interface OnKeyboardListener {

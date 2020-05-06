@@ -26,6 +26,6 @@ public class LiveBarrageTipHolder extends BaseHolder<LiveBarrageModel> {
 
 	@Override public void bindData(LiveBarrageModel model, int position) {
 		if (model == null) return;
-		tvName.setText(model.name);
+		tvName.setText(model.content);
 	}
 }

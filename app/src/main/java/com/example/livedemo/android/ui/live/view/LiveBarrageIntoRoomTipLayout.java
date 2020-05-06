@@ -42,9 +42,9 @@ public class LiveBarrageIntoRoomTipLayout extends FrameLayout {
 			setVisibility(GONE);
 			return;
 		}
-		if (!TextUtils.isEmpty(model.name)) {
+		if (!TextUtils.isEmpty(model.nickName)) {
 			setVisibility(VISIBLE);
-			tvName.setText(model.name);
+			tvName.setText(model.nickName);
 		} else {
 			setVisibility(GONE);
 			tvName.setText("");

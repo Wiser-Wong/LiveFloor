@@ -1,11 +1,18 @@
 package com.example.livedemo.android.ui.live.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.livedemo.R;
+import com.example.livedemo.android.ui.live.activity.LiveActivity;
+import com.example.livedemo.android.ui.live.view.LiveFloorViewPager;
 import com.example.livedemo.frame.LiveHelper;
 import com.example.livedemo.frame.base.BaseFragment;
 import com.wiser.library.base.WISERBuilder;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @author wangxy
@@ -13,30 +20,33 @@ import com.wiser.library.base.WISERBuilder;
  *         LiveFloorFragment 直播浮层
  */
 public class LiveFloorFragment extends BaseFragment {
-
-	private LiveFloorTopFragment floorTopFragment;
+	@BindView(R.id.vp_floor) LiveFloorViewPager vpFloor;
 
 	@Override protected WISERBuilder build(WISERBuilder builder) {
 		builder.layoutId(R.layout.live_floor_fragment);
 		return builder;
 	}
 
+	@Override
+	public void initCreateViewAfter(Bundle savedInstanceState) {
+		super.initCreateViewAfter(savedInstanceState);
+		ButterKnife.bind(this,getFragmentView());
+	}
+
 	@Override protected void initData(Bundle savedInstanceState) {
-		initPartFragment();
+		vpFloor.initPager(this);
 	}
 
-	// 加载分布局
-	private void initPartFragment() {
-		// 加载浮层顶部区域
-		LiveHelper.display().commitChildReplace(this, R.id.fl_floor_top, floorTopFragment = new LiveFloorTopFragment());
-		// 加载浮层底部状态栏布局
-		LiveHelper.display().commitChildReplace(this, R.id.fl_floor_bottom, LiveFloorBottomFragment.createFloorBottomFragment(isShow -> {
-			floorTopFragment.showTopHead(isShow);
-		}));
+	@OnClick(value = R.id.iv_live_close) public void onViewClick(View view){
+		if (view.getId() == R.id.iv_live_close) {// 关闭直播
+			LiveHelper.getActivityManage().finishActivityClass(LiveActivity.class);
+		}
 	}
 
-	@Override public void onDetach() {
+	@Override
+	public void onDetach() {
 		super.onDetach();
-		floorTopFragment = null;
+		if (vpFloor != null) vpFloor.detach();
+		vpFloor = null;
 	}
 }

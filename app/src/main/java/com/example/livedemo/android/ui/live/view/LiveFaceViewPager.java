@@ -77,9 +77,9 @@ public class LiveFaceViewPager extends ViewPager implements FaceAdapter.OnFaceIt
 			pointView.setPadding(5, 5, 5, 5);
 			pointView.setLayoutParams(params);
 			if (i == 0) {
-				pointView.setImageResource(R.drawable.point_grey);
-			} else {
 				pointView.setImageResource(R.drawable.point_red);
+			} else {
+				pointView.setImageResource(R.drawable.point_grey);
 			}
 			if (llChatFacePoint != null) llChatFacePoint.addView(pointView);
 		}
@@ -98,8 +98,8 @@ public class LiveFaceViewPager extends ViewPager implements FaceAdapter.OnFaceIt
 				for (int i = 0; i < llChatFacePoint.getChildCount(); i++) {
 					AppCompatImageView pointView = (AppCompatImageView) llChatFacePoint.getChildAt(i);
 					if (pointView != null) {
-						if (position == i) pointView.setImageResource(R.drawable.point_grey);
-						else pointView.setImageResource(R.drawable.point_red);
+						if (position == i) pointView.setImageResource(R.drawable.point_red);
+						else pointView.setImageResource(R.drawable.point_grey);
 					}
 				}
 			}

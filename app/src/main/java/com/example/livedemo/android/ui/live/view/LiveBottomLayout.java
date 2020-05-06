@@ -93,12 +93,12 @@ public class LiveBottomLayout extends FrameLayout {
 
 	// 根布局按下监听
 	private void listenerRootTouch() {
-		getRootView().setOnTouchListener((v, event) -> {
+		((ViewGroup)getParent()).setOnTouchListener((v, event) -> {
 			WISERInput.getInstance().hideSoftInput(etKeyboardTop);
 			getRootView().performClick();
 			handleFace(false);
 			this.isFaceShow = false;
-			return false;
+			return true;
 		});
 	}
 
@@ -206,12 +206,9 @@ public class LiveBottomLayout extends FrameLayout {
 		}
 	}
 
-	@OnClick(value = { R.id.iv_live_close, R.id.iv_live_face, R.id.iv_live_keyboard, R.id.iv_live_send, R.id.tv_keyboard_bottom, R.id.iv_floor_share,
+	@OnClick(value = {R.id.iv_live_face, R.id.iv_live_keyboard, R.id.iv_live_send, R.id.tv_keyboard_bottom, R.id.iv_floor_share,
 			R.id.iv_floor_shopping_bag }) public void onViewClick(View v) {
 		switch (v.getId()) {
-			case R.id.iv_live_close:// 关闭直播
-				LiveHelper.getActivityManage().finishActivityClass(LiveActivity.class);
-				break;
 			case R.id.iv_live_face:// 表情
 				isFaceShow = true;
 				WISERInput.getInstance().hideSoftInput(etKeyboardTop);

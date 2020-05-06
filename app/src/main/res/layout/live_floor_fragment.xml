@@ -3,15 +3,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/fl_floor_top"
+    <com.example.livedemo.android.ui.live.view.LiveFloorViewPager
+        android:id="@+id/vp_floor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:overScrollMode="never"/>
 
-    <FrameLayout
-        android:id="@+id/fl_floor_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_live_close"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/shape_30000000_oval_bg"
+        android:padding="7dp"
+        android:layout_gravity="end|bottom"
+        android:src="@mipmap/icon_close" />
 
 </FrameLayout>

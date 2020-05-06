@@ -7,7 +7,11 @@ package com.example.livedemo.android.ui.live.model;
  */
 public class LiveBarrageModel {
 
-    public String name;
+    public boolean isVip;
+
+    public String nickName;
+
+    public String content;
 
     public int type;//消息类型
 

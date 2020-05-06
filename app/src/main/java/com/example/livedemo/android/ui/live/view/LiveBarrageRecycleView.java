@@ -3,6 +3,8 @@ package com.example.livedemo.android.ui.live.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.livedemo.android.ui.live.adapter.LiveBarrageAdapter;
+import com.example.livedemo.android.ui.live.fragment.ILiveVideoFloorMessageView;
 import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 import com.example.livedemo.android.util.SmoothLayoutManager;
 import com.example.livedemo.frame.LiveHelper;
+import com.wiser.library.util.WISERInput;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +26,7 @@ import java.util.List;
  * 
  *         直播弹幕列表视图
  */
-public class LiveBarrageRecycleView extends RecyclerView {
+public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFloorMessageView {
 
 	private LiveBarrageAdapter		barrageAdapter;
 
@@ -33,6 +37,8 @@ public class LiveBarrageRecycleView extends RecyclerView {
 	private final int				NEAR_BOTTOM_COUNT	= 1;	// 滚动到接近底部然后顺滑滚动
 
 	private List<LiveBarrageModel>	storageList;				// 缓存滑动或者触摸聊天列表时并且没有处于最底部的时候记录存储，等没有触摸并且处于最底部的时候讲缓存数据添加进聊天列表
+
+	private List<LiveBarrageModel> 	models = new ArrayList<>(); //记录新增消息
 
 	private OnScrollMessageListener	onScrollMessageListener;
 
@@ -59,15 +65,29 @@ public class LiveBarrageRecycleView extends RecyclerView {
 		setAdapter(barrageAdapter = new LiveBarrageAdapter(LiveHelper.getActivityManage().getCurrentIsRunningActivity()));
 	}
 
-	// 初始数据
-	public void setData(List<LiveBarrageModel> models) {
+	// 初始消息数据
+	@Override
+	public void initMessages(List<LiveBarrageModel> models) {
 		if (models == null) return;
 		barrageAdapter.setItems(models);
 		scrollBottom();
 	}
 
-	// 添加多条数据
-	public synchronized void addData(List<LiveBarrageModel> models) {
+	// 初始消息数据
+	@Override
+	public void initMessage(LiveBarrageModel model) {
+		if (model == null) return;
+
+		resetModels();
+		models.add(model);
+
+		barrageAdapter.setItems(models);
+		scrollBottom();
+	}
+
+	// 添加聊天多条数据
+	@Override
+	public void addMessages(List<LiveBarrageModel> models) {
 		if (models == null) return;
 
 		if (isTouch) {
@@ -94,8 +114,21 @@ public class LiveBarrageRecycleView extends RecyclerView {
 		handleAddData(models.size(), false);
 	}
 
-	// 添加单条数据
-	public synchronized void addItem(LiveBarrageModel model) {
+	// 添加聊天单条数据
+	@Override
+	public void addMessage(LiveBarrageModel model) {
+		if (model == null) return;
+
+		resetModels();
+
+		models.add(model);
+
+		addMessages(models);
+	}
+
+	// 添加提醒单条数据
+	@Override
+	public void addTipMessage(LiveBarrageModel model) {
 		if (model == null) return;
 
 		// 记录进入直播数据
@@ -150,6 +183,12 @@ public class LiveBarrageRecycleView extends RecyclerView {
 		return storageList;
 	}
 
+	// 重置记录数据
+	private void resetModels() {
+		if (models != null) models.clear();
+		else models = new ArrayList<>();
+	}
+
 	// 设置暂停状态 为了防止切换后台界面还在刷新
 	public void setPause(boolean pause) {
 		this.isPause = pause;
@@ -171,13 +210,14 @@ public class LiveBarrageRecycleView extends RecyclerView {
 
 	// 滑动到底部
 	public void scrollBottom() {
-		LiveHelper.mainLooper().execute(() -> smoothScrollToPosition(barrageAdapter.getItemCount() - 1));
+//		LiveHelper.mainLooper().execute(() -> smoothScrollToPosition(barrageAdapter.getItemCount() - 1));
+		smoothScrollToPosition(barrageAdapter.getItemCount() - 1);
 	}
 
 	// 滚动接近底部 然后动效滚动到底部
 	public void scrollNearBottom() {
 		// 如果当前处于距底部很多条数据的时候会滑动好长时间，所以先滑动到距底部倒数个数位置，然后在平滑滚动到底部
-		if (barrageAdapter.getItemCount() - 1 - NEAR_BOTTOM_COUNT >= NEAR_BOTTOM_COUNT) LiveHelper.mainLooper().execute(() -> scrollToPosition(barrageAdapter.getItemCount() - 1 - NEAR_BOTTOM_COUNT));
+		if (barrageAdapter.getItemCount() - 1 - NEAR_BOTTOM_COUNT >= NEAR_BOTTOM_COUNT) scrollToPosition(barrageAdapter.getItemCount() - 1 - NEAR_BOTTOM_COUNT);
 		scrollBottom();
 	}
 
@@ -228,6 +268,7 @@ public class LiveBarrageRecycleView extends RecyclerView {
 	}
 
 	@Override public boolean dispatchTouchEvent(MotionEvent ev) {
+		int downX = (int) ev.getX();
 		switch (ev.getAction()) {
 			case MotionEvent.ACTION_DOWN:
 				isTouch = true;
@@ -235,6 +276,10 @@ public class LiveBarrageRecycleView extends RecyclerView {
 				// 触摸时更新最后一条提醒进入直播间状态让它显示出来，并且悬浮的进入直播间布局隐藏
 				if (onScrollMessageListener != null) onScrollMessageListener.isTouchMessage(isTouch);
 				break;
+			case MotionEvent.ACTION_MOVE:
+				isTouch = !(Math.abs(ev.getX() - downX) > 0);
+				break;
+			case MotionEvent.ACTION_CANCEL:
 			case MotionEvent.ACTION_UP:
 				isTouch = false;
 				performClick();
@@ -250,7 +295,7 @@ public class LiveBarrageRecycleView extends RecyclerView {
 
 	// 添加缓存的数据
 	public void addStorageData() {
-		addData(getStorageList());
+		addMessages(getStorageList());
 		// 清空缓存否则再次添加会添加许多条
 		if (storageList != null) storageList.clear();
 	}
@@ -263,6 +308,8 @@ public class LiveBarrageRecycleView extends RecyclerView {
 	public void detach() {
 		if (storageList != null) storageList.clear();
 		storageList = null;
+		if (models != null) models.clear();
+		models = null;
 		onScrollMessageListener = null;
 		barrageAdapter = null;
 		intoRoomTipModel = null;

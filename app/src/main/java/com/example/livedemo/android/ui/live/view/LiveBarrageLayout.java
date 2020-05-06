@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.livedemo.R;
+import com.example.livedemo.android.ui.live.fragment.ILiveVideoFloorMessageView;
 import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 
 import java.text.MessageFormat;
@@ -25,7 +26,7 @@ import java.util.List;
  * 
  *         弹幕布局
  */
-public class LiveBarrageLayout extends FrameLayout implements LiveBarrageRecycleView.OnScrollMessageListener, View.OnClickListener {
+public class LiveBarrageLayout extends FrameLayout implements LiveBarrageRecycleView.OnScrollMessageListener, View.OnClickListener, ILiveVideoFloorMessageView {
 
 	private LiveBarrageRecycleView			rlvBarrage;					// 弹幕控件
 
@@ -64,21 +65,38 @@ public class LiveBarrageLayout extends FrameLayout implements LiveBarrageRecycle
 	}
 
 	// 添加垂直弹幕数据
-	public void setData(List<LiveBarrageModel> models) {
+	@Override
+	public void initMessages(List<LiveBarrageModel> models) {
 		if (models == null) return;
-		rlvBarrage.setData(models);
+		rlvBarrage.initMessages(models);
 	}
 
-	// 添加多条数据
-	public synchronized void addData(List<LiveBarrageModel> models) {
-		if (models == null) return;
-		rlvBarrage.addData(models);
-	}
-
-	// 添加单条数据
-	public synchronized void addItem(LiveBarrageModel model) {
+	// 添加垂直弹幕数据
+	@Override
+	public void initMessage(LiveBarrageModel model) {
 		if (model == null) return;
-		rlvBarrage.addItem(model);
+		rlvBarrage.initMessage(model);
+	}
+
+	// 添加聊天多条数据
+	@Override
+	public synchronized void addMessages(List<LiveBarrageModel> models) {
+		if (models == null) return;
+		rlvBarrage.addMessages(models);
+	}
+
+	// 添加聊天单条数据
+	@Override
+	public synchronized void addMessage(LiveBarrageModel model) {
+		if (model == null) return;
+		rlvBarrage.addMessage(model);
+	}
+
+	// 添加提醒单条数据
+	@Override
+	public synchronized void addTipMessage(LiveBarrageModel model) {
+		if (model == null) return;
+		rlvBarrage.addTipMessage(model);
 
 		if (!rlvBarrage.isTouch() && rlvBarrage.isScrollBottom()) {
 			if (!isPause) {
