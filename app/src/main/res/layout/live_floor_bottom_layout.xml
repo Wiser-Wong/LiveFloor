@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/iv_live_send"
-                android:layout_toLeftOf="@+id/iv_live_send">
+                android:layout_toLeftOf="@+id/iv_live_send"
+                android:visibility="gone">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_live_face"
@@ -49,7 +50,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:adjustViewBounds="true"
-                    android:src="@mipmap/icon_face" />
+                    android:src="@drawable/icon_face" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_live_keyboard"
@@ -58,7 +59,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:adjustViewBounds="true"
-                    android:src="@mipmap/icon_keyboard"
+                    android:src="@drawable/icon_keyboard"
                     android:visibility="gone" />
 
             </FrameLayout>
@@ -73,7 +74,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/icon_send" />
+                android:src="@drawable/icon_send" />
 
         </RelativeLayout>
 
@@ -131,7 +132,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/shape_30000000_oval_bg"
                 android:padding="7dp"
-                android:src="@mipmap/icon_shoppiing_bag" />
+                android:src="@drawable/icon_shoppiing_bag" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="36dp"
@@ -141,7 +142,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/shape_30000000_oval_bg"
                 android:padding="7dp"
-                android:src="@mipmap/icon_gift" />
+                android:src="@drawable/icon_gift" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_floor_share"
@@ -152,7 +153,7 @@
                 android:adjustViewBounds="true"
                 android:background="@drawable/shape_30000000_oval_bg"
                 android:padding="7dp"
-                android:src="@mipmap/icon_share" />
+                android:src="@drawable/icon_share" />
 
             <View
                 android:layout_width="36dp"

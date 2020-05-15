@@ -1,15 +1,13 @@
 package com.example.livedemo.android.ui.live.adapter.holder.barrageholder;
 
-import com.example.livedemo.R;
-import com.example.livedemo.android.ui.live.adapter.holder.BaseHolder;
-import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
-
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import butterknife.BindView;
+import com.example.livedemo.R;
+import com.example.livedemo.android.ui.live.adapter.holder.BaseHolder;
+import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 
 /**
  * @author wangxy
@@ -18,14 +16,16 @@ import butterknife.BindView;
  */
 public class LiveBarrageTipHolder extends BaseHolder<LiveBarrageModel> {
 
-	@BindView(R.id.tv_name) TextView tvName;
+	private TextView tvLiveChatContent;
 
 	public LiveBarrageTipHolder(@NonNull View itemView) {
 		super(itemView);
+		tvLiveChatContent = itemView.findViewById(R.id.tv_live_chat_content);
 	}
 
-	@Override public void bindData(LiveBarrageModel model, int position) {
+	@Override
+    public void bindData(LiveBarrageModel model, int position) {
 		if (model == null) return;
-		tvName.setText(model.content);
+		tvLiveChatContent.setText(model.content);
 	}
 }

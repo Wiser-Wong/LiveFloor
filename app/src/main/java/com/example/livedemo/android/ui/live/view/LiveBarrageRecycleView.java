@@ -98,6 +98,7 @@ public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFl
 			}
 			return;
 		}
+		System.out.println("------------addMessages-->>");
 		// 如果最后一条是进入直播间提示
 		if (isIntoRoomTip()) {
 			if (barrageAdapter.getItemCount() > 0) {
@@ -137,6 +138,8 @@ public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFl
 		if (isTouch || !isScrollBottom()) {
 			return;
 		}
+
+		System.out.println("------------addTipMessage-->>");
 
 		// 如果最后一条是进入直播间提示
 		if (isIntoRoomTip()) {
@@ -246,7 +249,7 @@ public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFl
 	// 是否最后一条是新进入的提示
 	private boolean isHideIntoRoomTip() {
 		return (barrageAdapter != null && barrageAdapter.getItemCount() > 0 && barrageAdapter.getItem(barrageAdapter.getItemCount() - 1) != null)
-				&& barrageAdapter.getItem(barrageAdapter.getItemCount() - 1).isHide;
+				&& barrageAdapter.getItem(barrageAdapter.getItemCount() - 1).isHideLastItem;
 	}
 
 	// 更改最后一条状态
@@ -254,7 +257,7 @@ public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFl
 		if (isHideIntoRoomTip()) {
 			LiveBarrageModel model = barrageAdapter.getItem(barrageAdapter.getItemCount() - 1);
 			if (model != null) {
-				model.isHide = isShow;
+				model.isHideLastItem = isShow;
 				// 更新聊天列表最后一条数据
 				barrageAdapter.getItems().set(barrageAdapter.getItemCount() - 1, model);
 				barrageAdapter.notifyItemChanged(barrageAdapter.getItemCount() - 1);
@@ -277,7 +280,7 @@ public class LiveBarrageRecycleView extends RecyclerView implements ILiveVideoFl
 				if (onScrollMessageListener != null) onScrollMessageListener.isTouchMessage(isTouch);
 				break;
 			case MotionEvent.ACTION_MOVE:
-				isTouch = !(Math.abs(ev.getX() - downX) > 0);
+//				isTouch = !(Math.abs(ev.getX() - downX) > 0);
 				break;
 			case MotionEvent.ACTION_CANCEL:
 			case MotionEvent.ACTION_UP:

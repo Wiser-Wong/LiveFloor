@@ -21,10 +21,9 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.example.livedemo.R;
-import com.example.livedemo.android.ui.live.activity.LiveActivity;
 import com.example.livedemo.android.ui.live.fragment.LiveFloorBottomFragment;
-import com.example.livedemo.android.ui.live.fragment.LiveShareDialogFragment;
-import com.example.livedemo.android.ui.live.fragment.LiveShoppingBagDialogFragment;
+import com.example.livedemo.android.ui.live.dialog.LiveShareDialogFragment;
+import com.example.livedemo.android.ui.live.dialog.LiveShoppingBagDialogFragment;
 import com.example.livedemo.android.util.KeyboardHelper;
 import com.example.livedemo.frame.LiveHelper;
 import com.wiser.library.util.WISERInput;
@@ -127,14 +126,14 @@ public class LiveBottomLayout extends FrameLayout {
 
 	// 软键盘发送事件监听
 	private void listenerKeyboardSend() {
-		etKeyboardTop.setOnKeyListener((v, keyCode, event) -> {
-			if (KeyEvent.KEYCODE_ENTER == keyCode && KeyEvent.ACTION_UP == event.getAction()) {
-				// 处理事件
-				handleSend();
-				return true;
-			}
-			return false;
-		});
+//		etKeyboardTop.setOnKeyListener((v, keyCode, event) -> {
+//			if (KeyEvent.KEYCODE_ENTER == keyCode && KeyEvent.ACTION_UP == event.getAction()) {
+//				// 处理事件
+//				handleSend();
+//				return true;
+//			}
+//			return false;
+//		});
 	}
 
 	public void setOnKeyboardListener(LiveFloorBottomFragment.OnKeyboardListener onKeyboardListener) {

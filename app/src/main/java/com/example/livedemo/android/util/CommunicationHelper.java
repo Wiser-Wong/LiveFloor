@@ -1,10 +1,11 @@
 package com.example.livedemo.android.util;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import com.example.livedemo.android.ui.live.fragment.ILiveVideoFloorBottomView;
 import com.example.livedemo.android.ui.live.fragment.ILiveVideoFloorMessageView;
 import com.example.livedemo.android.ui.live.fragment.LiveFloorBottomFragment;
+import com.example.livedemo.android.ui.live.fragment.LiveFloorFragment;
 import com.example.livedemo.android.ui.live.model.LiveBarrageModel;
 import com.example.livedemo.frame.LiveHelper;
 
@@ -19,7 +20,7 @@ import java.util.List;
 public class CommunicationHelper {
 
     //禁言
-    public static void shutUp(AppCompatActivity activity, boolean isShutUp) {
+    public static void shutUp(FragmentActivity activity, boolean isShutUp) {
         if (activity == null) return;
         ILiveVideoFloorBottomView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;
@@ -30,8 +31,16 @@ public class CommunicationHelper {
     public static void kickOut(boolean isKickOut) {
     }
 
+    // 直播结束
+    public static void setLiveEnd(FragmentActivity activity){
+        if (activity == null) return;
+        LiveFloorFragment fragment = LiveHelper.display().findFragment(LiveFloorFragment.class.getName());
+        if (fragment == null) return;
+        fragment.setLiveEnd(true);
+    }
+
     //初始化消息
-    public static void initMessages(AppCompatActivity activity, List<LiveBarrageModel> models) {
+    public static void initMessages(FragmentActivity activity, List<LiveBarrageModel> models) {
         if (activity == null) return;
         ILiveVideoFloorMessageView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;
@@ -39,7 +48,7 @@ public class CommunicationHelper {
     }
 
     //初始化消息
-    public static void initMessage(AppCompatActivity activity, LiveBarrageModel model) {
+    public static void initMessage(FragmentActivity activity, LiveBarrageModel model) {
         if (activity == null) return;
         ILiveVideoFloorMessageView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;
@@ -47,7 +56,7 @@ public class CommunicationHelper {
     }
 
     //添加多条消息
-    public static void addMessages(AppCompatActivity activity, List<LiveBarrageModel> models) {
+    public static void addMessages(FragmentActivity activity, List<LiveBarrageModel> models) {
         if (activity == null) return;
         ILiveVideoFloorMessageView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;
@@ -55,7 +64,7 @@ public class CommunicationHelper {
     }
 
     //添加单条消息
-    public static void addMessage(AppCompatActivity activity, LiveBarrageModel model) {
+    public static void addMessage(FragmentActivity activity, LiveBarrageModel model) {
         if (activity == null) return;
         ILiveVideoFloorMessageView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;
@@ -63,7 +72,7 @@ public class CommunicationHelper {
     }
 
     //添加提醒单条消息
-    public static void addTipMessage(AppCompatActivity activity, LiveBarrageModel model) {
+    public static void addTipMessage(FragmentActivity activity, LiveBarrageModel model) {
         if (activity == null) return;
         ILiveVideoFloorMessageView fragment = (LiveFloorBottomFragment) LiveHelper.display().findFragment(LiveFloorBottomFragment.class.getName());
         if (fragment == null) return;

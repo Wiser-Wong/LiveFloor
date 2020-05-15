@@ -51,17 +51,17 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz>  i
 		liveBottom.setOnKeyboardListener(onKeyboardListener);
 
 		// 测试定时添加多条数据
-		LiveHelper.mainLooper().execute(runnable, 1300);
+		LiveHelper.mainLooper().execute(runnable, 1);
 
 		// 测试直播用户进入信息
-		LiveHelper.mainLooper().execute(runnable1, 500);
+		LiveHelper.mainLooper().execute(runnable1, 1);
 	}
 
 	private Runnable	runnable	= new Runnable() {
 
 										@Override public void run() {
 											barrageLayout.addMessages(biz().addData());
-											LiveHelper.mainLooper().execute(runnable, 1300);
+											LiveHelper.mainLooper().execute(runnable, 1);
 										}
 									};
 
@@ -69,7 +69,7 @@ public class LiveFloorBottomFragment extends BaseFragment<LiveFloorBottomBiz>  i
 
 										@Override public void run() {
 											barrageLayout.addTipMessage(biz().addItem());
-											LiveHelper.mainLooper().execute(runnable1, 500);
+											LiveHelper.mainLooper().execute(runnable1, 1);
 										}
 									};
 

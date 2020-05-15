@@ -1,4 +1,4 @@
-package com.example.livedemo.android.ui.live.fragment;
+package com.example.livedemo.android.ui.live.dialog;
 
 /**
  * @author wangxy

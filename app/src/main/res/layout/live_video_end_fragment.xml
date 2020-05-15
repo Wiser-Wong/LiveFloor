@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_live_end_bg"
+    android:paddingTop="@dimen/toolbar_fit_system">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_live_end_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/icon_close_white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_live_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="46dp"
+        android:text="直播已结束"
+        android:textColor="#ffffff"
+        android:textSize="19sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.example.livedemo.android.view.CircleImageView
+        android:id="@+id/iv_live_end_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_live_end" />
+
+    <TextView
+        android:id="@+id/tv_live_end_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="林俊杰"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_live_end_head" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/shape_06fffff_7radius_bg"
+        android:paddingStart="17dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="17dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_live_end_name">
+
+        <TextView
+            android:id="@+id/tv_live_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="02:36:18"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_live_end_audience_count"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:gravity="center"
+            android:text="直播时长"
+            android:textColor="#9B9B9B"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_live_end_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_live_end_time" />
+
+        <TextView
+            android:id="@+id/tv_live_end_audience_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="99898808"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_live_end_time"
+            app:layout_constraintRight_toLeftOf="@+id/tv_live_end_discuss_count"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:gravity="center"
+            android:text="观众总数"
+            android:textColor="#9B9B9B"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_live_end_audience_count"
+            app:layout_constraintTop_toBottomOf="@+id/tv_live_end_audience_count" />
+
+        <TextView
+            android:id="@+id/tv_live_end_discuss_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="3242342"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            app:layout_constraintLeft_toRightOf="@+id/tv_live_end_audience_count"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:gravity="center"
+            android:text="评论数"
+            android:textColor="#9B9B9B"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_live_end_discuss_count"
+            app:layout_constraintTop_toBottomOf="@+id/tv_live_end_discuss_count" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

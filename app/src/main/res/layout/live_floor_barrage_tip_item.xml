@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_name"
+    android:id="@+id/tv_live_chat_content"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_30000000_10radius_bg"
@@ -9,6 +9,6 @@
     android:paddingEnd="10dp"
     android:paddingBottom="5dp"
     android:textColor="#FEE274"
-    android:textSize="12sp"
+    android:textSize="13sp"
     android:lineSpacingExtra="3dp"
     android:layout_marginBottom="4dp"/>

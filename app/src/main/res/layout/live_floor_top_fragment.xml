@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:adjustViewBounds="true"
-        android:src="@mipmap/live_top_photo_bg"
+        android:src="@drawable/live_top_photo_bg"
         android:visibility="gone"
         android:scaleType="centerCrop"/>
 

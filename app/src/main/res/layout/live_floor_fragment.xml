@@ -22,6 +22,12 @@
         android:background="@drawable/shape_30000000_oval_bg"
         android:padding="7dp"
         android:layout_gravity="end|bottom"
-        android:src="@mipmap/icon_close" />
+        android:src="@drawable/icon_close" />
+
+    <FrameLayout
+        android:id="@+id/fl_video_end"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </FrameLayout>

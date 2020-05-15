@@ -1,10 +1,4 @@
-package com.example.livedemo.android.ui.live.fragment;
-
-import com.example.livedemo.R;
-import com.example.livedemo.android.ui.live.adapter.LiveShoppingBagAdapter;
-import com.example.livedemo.android.ui.live.model.LiveShoppingBagModel;
-import com.example.livedemo.frame.LiveHelper;
-import com.wiser.library.util.WISERApp;
+package com.example.livedemo.android.ui.live.dialog;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -21,27 +15,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
+import com.example.livedemo.R;
+import com.example.livedemo.frame.LiveHelper;
 
 /**
  * @author wangxy
  * 
- *         购物袋弹窗
+ *         分享弹窗
  */
-public class LiveShoppingBagDialogFragment extends DialogFragment {
+public class LiveShareDialogFragment extends DialogFragment implements View.OnClickListener {
 
-	private LiveShoppingBagDialogBiz	biz;
+	private LiveShareDialogBiz biz;
 
-	private RecyclerView				rlvShopping;
-
-	private LiveShoppingBagAdapter		shoppingBagAdapter;
-
-	public static LiveShoppingBagDialogFragment createDialog() {
-		LiveShoppingBagDialogFragment dialog = new LiveShoppingBagDialogFragment();
+	public static LiveShareDialogFragment createDialog() {
+		LiveShareDialogFragment dialog = new LiveShareDialogFragment();
 		return dialog;
 	}
 
@@ -81,8 +69,10 @@ public class LiveShoppingBagDialogFragment extends DialogFragment {
 			}
 		}
 
-		View view = inflater.inflate(R.layout.live_shopping_bag_dialog, container, false);
-		rlvShopping = view.findViewById(R.id.rlv_shopping);
+		View view = inflater.inflate(R.layout.live_share_dialog, container, false);
+
+		view.findViewById(R.id.tv_share_weChat).setOnClickListener(this);
+		view.findViewById(R.id.tv_share_friend_circle).setOnClickListener(this);
 
 		// 遮挡状态栏
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -101,24 +91,11 @@ public class LiveShoppingBagDialogFragment extends DialogFragment {
 
 	// 初始化
 	private void init() {
-		biz = new LiveShoppingBagDialogBiz(this);
+		biz = new LiveShareDialogBiz(this);
 		initView();
-		initData();
 	}
 
-	private void initView() {
-		rlvShopping.setLayoutManager(new LinearLayoutManager(getContext()));
-		rlvShopping.setItemAnimator(new DefaultItemAnimator());
-		rlvShopping.setAdapter(shoppingBagAdapter = new LiveShoppingBagAdapter(getContext()));
-	}
-
-	private void initData(){
-		if (biz != null) setItems(biz.getShoppingBagData());
-	}
-
-	public void setItems(List<LiveShoppingBagModel> list) {
-		if (shoppingBagAdapter != null) shoppingBagAdapter.setItems(list);
-	}
+	private void initView() {}
 
 	@Override public void onStart() {
 		super.onStart();
@@ -127,16 +104,27 @@ public class LiveShoppingBagDialogFragment extends DialogFragment {
 		if (window != null && getActivity() != null) {
 			WindowManager.LayoutParams wlp = window.getAttributes();
 			wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
-			wlp.height = (int) (WISERApp.getScreenHeight() * 0.6f);
+			wlp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 			wlp.gravity = Gravity.BOTTOM;
 			wlp.windowAnimations = R.style.MemberDialogAnimation;
 			window.setAttributes(wlp);
 		}
 	}
 
+	@Override public void onClick(View v) {
+		int id = v.getId();
+		if (id == R.id.tv_share_weChat) {// 微信
+		    if (biz != null) biz.shareWeChat();
+		    dismiss();
+		} else if (id == R.id.tv_share_friend_circle) {// 朋友圈
+            if (biz != null) biz.shareFriendCircle();
+            dismiss();
+        }
+	}
+
 	@Override
 	public void show(@NonNull FragmentManager manager, @Nullable String tag) {
-		if (LiveHelper.display().findFragment(LiveShoppingBagDialogFragment.class.getName()) == null)
+		if (LiveHelper.display().findFragment(LiveShareDialogFragment.class.getName()) == null)
 			super.show(manager, tag);
 	}
 
