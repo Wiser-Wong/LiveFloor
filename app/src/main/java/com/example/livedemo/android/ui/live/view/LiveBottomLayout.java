@@ -92,12 +92,12 @@ public class LiveBottomLayout extends FrameLayout {
 
 	// 根布局按下监听
 	private void listenerRootTouch() {
-		((ViewGroup)getParent()).setOnTouchListener((v, event) -> {
+		((ViewGroup) getParent()).setOnTouchListener((v, event) -> {
 			WISERInput.getInstance().hideSoftInput(etKeyboardTop);
-			getRootView().performClick();
+			((ViewGroup) getParent()).performClick();
 			handleFace(false);
 			this.isFaceShow = false;
-			return true;
+			return false;
 		});
 	}
 
@@ -107,6 +107,9 @@ public class LiveBottomLayout extends FrameLayout {
 		softKeyboardStateHelper.addSoftKeyboardStateListener(new KeyboardHelper.SoftKeyboardStateListener() {
 
 			@Override public void onSoftKeyboardOpened(int keyboardHeightInPx) {
+				//不使用adjustPan的原因是会将整个布局都整体上移，其他层级的布局也会变化，例如视频播放
+//				((FragmentActivity)getContext()).getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+				//使用线性布局 会出现弹出软键盘 如果marginBottom 大于所剩的布局的情况，会无法将输入框顶到软键盘上面，所以选择了父布局为RelativeLayout来解决无法将布局顶出屏幕
 				if (onKeyboardListener != null) onKeyboardListener.onKeyboardState(true);
 				// 键盘打开
 				ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) rlKeyboardTop.getLayoutParams();
